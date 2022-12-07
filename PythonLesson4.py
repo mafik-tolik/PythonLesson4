@@ -1,4 +1,6 @@
 import msvcrt
+import math
+import sympy
 import random
 
 
@@ -58,6 +60,28 @@ for el in some_list3:
                 some_list3.remove(i)
 
 print(f'Список неповторяющихся элементов -> {some_list3}')
+
+
+msvcrt.getch()
+print('\n4. Задана натуральная степень k. Сформировать случайным образом список ' +
+      'коэффициентов (значения от 0 до 100) многочлена и записать в файл многочлен степени k.' +
+      '\nПример:\nk=2 => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0' +
+      '\nРешение:')
+
+k = int(input('Введите k: '))
+
+x = sympy.Symbol('x')
+funk = 0
+
+for n in range(k+1):
+    funk = random.randint(0, 100) * (x**n) + funk
+
+with open('file.txt', 'w+', encoding='utf-8') as file:
+    file.write(f'{funk}' + ' = 0')
+
+    file.seek(0, 0)
+    for text in file:
+        print(text)
 
 
 msvcrt.getch()

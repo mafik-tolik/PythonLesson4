@@ -7,24 +7,43 @@ os.system('cls')
 
 # -----------------------------------------------------------------------------------
 
-print('\n4. Задана натуральная степень k. Сформировать случайным образом список ' +
-      'коэффициентов (значения от 0 до 100) многочлена и записать в файл многочлен степени k.' +
-      '\nПример:\nk=2 => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0' +
+# ЗАДАЧА НЕ РЕШЕНА
+
+print('\n5. Даны два файла, в каждом из которых находится запись многочлена. ' +
+      'Задача - сформировать файл, содержащий сумму многочленов.' +
       '\nРешение:')
 
-k = int(input('Введите k: '))
-
 x = sympy.Symbol('x')
-funk = 0
-n = 0
 
-# while n < k:
-
-funk = random.randint(0, 100) * (x**n) + funk
-if not sympy.solve(funk):
-    n += 1
-    funk = random.randint(0, 100) * (x**n) + funk
+with open('file1.txt', 'r', encoding='utf-8') as file:
+    text_srt = file.read().split('=')
 
 
-print(funk)
+# for i in text_srt:
+#     if 'x' in i:
+#         'x' = x
+# text_int = list(map(int, text_srt[0].split('+')))
 
+
+# for i in text_srt:
+#     if '**' in i:
+#         i = i.split('*')
+#         i[0] = int(i[0])
+#         i = tuple(i)
+#     elif '*' in i:
+#         i = i.split('*')
+#         i[0] = int(i[0])
+#         i = tuple(i)
+#     else:
+#         i = int(i)
+
+# print(text_srt)
+
+
+# with open('file.txt2', 'r', encoding='utf-8') as file:
+#     # <.read()> - читаем нашу переменную <file>.
+#     # <splitlines()> разделяет текст из файла и превращает его в список из строк (каждая строчка - отдельный элемент).
+#     index_list = file.read().splitlines()
+#     for index in index_list:
+#         mult = mult * list[int(index)]
+# print(mult)
