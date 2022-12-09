@@ -13,31 +13,36 @@ print('\n5. Даны два файла, в каждом из которых на
       'Задача - сформировать файл, содержащий сумму многочленов.' +
       '\nРешение:')
 
-x = sympy.Symbol('x')
-
 with open('file1.txt', 'r', encoding='utf-8') as file:
-    text_srt = file.read().split('=')
+    text1 = file.read().split(' = ')
 
+sum1 = 0
+text1 = text1[0].split(' + ')
+for i in text1:
+    if 'x' in i:
+        if '**' in i:
+            i = i.split('**')
+            i[1] = int(i[1])
+            if '*' in i[0]:
+                j = i[0].split('*')
+                j[0] = int(j[0])
+                j[1] = sympy.Symbol('x')
+                sum1 += j[0]*(j[1]**i[1])
+            else:
+                i[0] = sympy.Symbol('x')
+                sum1 += i[0]**i[1]
+        else:
+            if '*' in i:
+                i = i.split('*')
+                i[0] = int(i[0])
+                i[1] = sympy.Symbol('x')
+                sum1 += i[0]*i[1]
+    else:
+        i = int(i)
+        sum1 += i
 
-# for i in text_srt:
-#     if 'x' in i:
-#         'x' = x
-# text_int = list(map(int, text_srt[0].split('+')))
-
-
-# for i in text_srt:
-#     if '**' in i:
-#         i = i.split('*')
-#         i[0] = int(i[0])
-#         i = tuple(i)
-#     elif '*' in i:
-#         i = i.split('*')
-#         i[0] = int(i[0])
-#         i = tuple(i)
-#     else:
-#         i = int(i)
-
-# print(text_srt)
+print(sum1)
+# 6*x**5 + 5*x**4 + 2*x**2 + 5*x + 9 = 0
 
 
 # with open('file.txt2', 'r', encoding='utf-8') as file:
