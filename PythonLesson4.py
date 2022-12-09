@@ -85,3 +85,68 @@ with open('file.txt', 'w+', encoding='utf-8') as file:
 
 
 msvcrt.getch()
+print('\n5. Даны два файла, в каждом из которых находится запись многочлена. ' +
+      'Задача - сформировать файл, содержащий сумму многочленов.' +
+      '\nРешение:')
+
+with open('file1.txt', 'r', encoding='utf-8') as file1:
+    text1 = file1.read().split(' = ')
+
+sum = 0
+text1 = text1[0].split(' + ')
+for i in text1:
+    if 'x' in i:
+        if '**' in i:
+            i = i.split('**')
+            i[1] = int(i[1])
+            if '*' in i[0]:
+                j = i[0].split('*')
+                j[0] = int(j[0])
+                j[1] = sympy.Symbol('x')
+                sum += j[0]*(j[1]**i[1])
+            else:
+                i[0] = sympy.Symbol('x')
+                sum += i[0]**i[1]
+        else:
+            if '*' in i:
+                i = i.split('*')
+                i[0] = int(i[0])
+                i[1] = sympy.Symbol('x')
+                sum += i[0]*i[1]
+    else:
+        i = int(i)
+        sum += i
+
+with open('file2.txt', 'r', encoding='utf-8') as file2:
+    text2 = file2.read().split(' = ')
+
+text2 = text2[0].split(' + ')
+for i in text2:
+    if 'x' in i:
+        if '**' in i:
+            i = i.split('**')
+            i[1] = int(i[1])
+            if '*' in i[0]:
+                j = i[0].split('*')
+                j[0] = int(j[0])
+                j[1] = sympy.Symbol('x')
+                sum += j[0]*(j[1]**i[1])
+            else:
+                i[0] = sympy.Symbol('x')
+                sum += i[0]**i[1]
+        else:
+            if '*' in i:
+                i = i.split('*')
+                i[0] = int(i[0])
+                i[1] = sympy.Symbol('x')
+                sum += i[0]*i[1]
+    else:
+        i = int(i)
+        sum += i
+
+with open('file3.txt', 'w+', encoding='utf-8') as file3:
+    file3.write(f'{sum}' + ' = 0')
+
+    file3.seek(0, 0)
+    for text in file3:
+        print(text)
