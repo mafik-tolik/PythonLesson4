@@ -4,3 +4,6 @@ import sympy
 import random
 
 os.system('cls')
+
+
+
